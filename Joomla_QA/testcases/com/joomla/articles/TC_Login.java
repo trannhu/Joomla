@@ -38,24 +38,24 @@ public class TC_Login extends AbstractTest{
 		category="- Automation Testing";
 		state="Unpublished";
 	}
-//	@Test
-//	public void TC_01_CreateNewArticle(){	
-//		articlePage=contentPage.clickNew();
-//		articlePage.typeTitle(title);
-//		articlePage.typeText(text);
-//		articlePage.getArticleCurrent(attribute);
-//		articlePage.selectCategory(category);
-//		contentPage=articlePage.clickSaveAndClose();
-//		verifyEquals(contentPage.isDisplayedMessage(),Message_Saved);
-//		
-//	}
+	@Test
+	public void TC_01_CreateNewArticle(){	
+		articlePage=contentPage.clickNew();
+		articlePage.typeTitle(title);
+		articlePage.typeText(text);
+		articlePage.getArticleCurrent(attribute);
+		articlePage.selectCategory(category);
+		contentPage=articlePage.clickSaveAndClose();
+		verifyEquals(contentPage.isDisplayedMessage(),Message_Saved);
+		
+	}
 	@Test
 	public void TC_03_PublishArticle(){
 		articlePage=contentPage.clickNew();
 		articlePage.typeTitle(title);
 		articlePage.typeText(text);
 		articlePage.selectStatus(state);
-//		articlePage.selectCategory(category);
+		articlePage.selectCategory(category);
 		contentPage=articlePage.clickSaveAndClose();
 		verifyEquals(contentPage.isDisplayedMessage(),Message_Saved);
 		
