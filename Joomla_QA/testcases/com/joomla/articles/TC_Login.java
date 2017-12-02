@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import common.AbstractTest;
 import pages.ArticlePage;
+import pages.ContentPage;
 import pages.FactoryPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -17,7 +18,8 @@ public class TC_Login extends AbstractTest{
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private ArticlePage articlePage;
-	private String title,text,Message_Saved,attribute,article,category,state;
+	private ContentPage contentPage;
+	private String title,text,Message_Saved,attribute,category,state;
 	
 	@Parameters ({ "browser", "url", "username", "password" })
 	@BeforeClass
@@ -28,7 +30,7 @@ public class TC_Login extends AbstractTest{
 		loginPage.typePass(password);
 		homePage=loginPage.clickSub();
 		homePage.clickContent();
-		articlePage=homePage.clickArticle();
+		contentPage=homePage.clickArticleDropdown();
 		title="Nhu Tran"+randomArticle();
 		text="First Article\n First Article"+randomArticle();
 		Message_Saved="Article saved.";
@@ -36,26 +38,26 @@ public class TC_Login extends AbstractTest{
 		category="- Automation Testing";
 		state="Unpublished";
 	}
-	@Test
-	public void TC_01_CreateNewArticle(){	
-		articlePage.clickNew();
-		articlePage.typeTitle(title);
-		article=articlePage.getArticleCurrent(attribute);
-		articlePage.selectCategory(category);
-		articlePage.typeText(text);
-		articlePage.clickSaveAndClose();
-		verifyEquals(articlePage.isDisplayedMessage(),Message_Saved);
-		
-	}
+//	@Test
+//	public void TC_01_CreateNewArticle(){	
+//		articlePage=contentPage.clickNew();
+//		articlePage.typeTitle(title);
+//		articlePage.typeText(text);
+//		articlePage.getArticleCurrent(attribute);
+//		articlePage.selectCategory(category);
+//		contentPage=articlePage.clickSaveAndClose();
+//		verifyEquals(contentPage.isDisplayedMessage(),Message_Saved);
+//		
+//	}
 	@Test
 	public void TC_03_PublishArticle(){
-		articlePage.clickNew();
+		articlePage=contentPage.clickNew();
 		articlePage.typeTitle(title);
-		articlePage.selectStatus(state);
-		articlePage.selectCategory(category);
 		articlePage.typeText(text);
-		articlePage.clickSaveAndClose();
-		verifyEquals(articlePage.isDisplayedMessage(),Message_Saved);
+		articlePage.selectStatus(state);
+//		articlePage.selectCategory(category);
+		contentPage=articlePage.clickSaveAndClose();
+		verifyEquals(contentPage.isDisplayedMessage(),Message_Saved);
 		
 	
 		

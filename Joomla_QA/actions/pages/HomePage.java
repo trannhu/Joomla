@@ -15,9 +15,9 @@ public class HomePage extends AbstractPage {
 		waitForControlVisible(driver, HomePageUI.Content_dropdown);
 		clickToElement(driver, HomePageUI.Content_dropdown);
 	}
-	public ArticlePage clickArticle(){
+	public ContentPage clickArticleDropdown(){
 		waitForControlVisible(driver, HomePageUI.Article_subdropdown);
 		clickToElement(driver, HomePageUI.Article_subdropdown);
-		return FactoryPage.getArticlePage(driver);
+		return FactoryPage.getContentPage(driver);
 	}
 }

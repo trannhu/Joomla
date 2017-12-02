@@ -116,10 +116,14 @@ public class AbstractPage {
 		select.selectByValue(value);
 	}
 	public void selectItemInDropdownByName(WebDriver driver, String locator, String value) {
+		locator=String.format(locator, value);
 		Select select = new Select(driver.findElement(By.xpath(locator)));
 		select.selectByVisibleText(value);
 	}
-
+	public void selectItemInDropdownByName1(WebDriver driver, String locator, String value) {
+		Select select = new Select(driver.findElement(By.xpath(locator)));
+		select.selectByVisibleText(value);
+	}
 	public void acceptAlert(WebDriver driver) {
 		Alert alert = driver.switchTo().alert();
 		alert.accept();

@@ -17,5 +17,10 @@ public class FactoryPage {
 		return new LoginPage(driver);
 		
 	}
+	public static ContentPage getContentPage(WebDriver driver){
+		return new ContentPage(driver);
+		
+	}
+	
 
 }
